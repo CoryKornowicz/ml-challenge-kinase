@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Results View </h1>
+
+<!-- Table of Results -->
+<!-- Data is received in a results object that contains the molecule image, and 4 columns for each one of its predictions-->
+<!-- The table is created using a for loop that iterates through the results object and creates a row for each molecule -->
+<!-- The first column contains the molecule image, and the other 4 columns contain the predictions for each kinase -->
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" class="mol">Molecule</th>
+            <th scope="col" class="num">JAK1</th>
+            <th scope="col" class="num">JAK2</th>
+            <th scope="col" class="num">JAK3</th>
+            <th scope="col" class="num">TYK2</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for res in results %}
+        <tr>
+
+            <td class="mol">
+                <div>
+                    <div>
+                        {{ res[0]|safe }}
+                    </div>
+                    <div>
+                        <span class="mol-label">
+                            {{ res[2] }}
+                        </span>
+                    </div>
+                </div>
+            </td>
+
+            {% for i in range(4) %}
+            <td class="num">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="num">pIC50</th>
+                            <th scope="col" class="num">Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="num">{{ res[1][i][0] }}</td>
+                            {% if res[1][i][1] < 0.70 %} 
+                            <td class="num error">{{ res[1][i][1] }} </td>
+                            {% else %}
+                            <td class="num success">{{ res[1][i][1] }}</td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

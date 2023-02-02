@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Upload File or Enter SMILES </h1>
+<p class="lead"> 
+    Submit a file of SMILES or Enter a SMILES string in to get started. 
+</p>
+<form action="/predict" method="POST" enctype="multipart/form-data">
+    <input type="text" name="smiles" id="smiles">
+    <input type="submit" value="Upload">
+</form>
+<br/>
+<form action="/predict" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" id="file">
+    <input type="submit" value="Upload">
+</form>
+{% endblock %}

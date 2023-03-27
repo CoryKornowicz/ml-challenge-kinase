@@ -12,7 +12,7 @@ I chose to tackle this problem in two ways: the first is to explore merging two 
 
 ## Data Analysis and Exploration 
 
-My analysis and exploration of the data were performed in [Data_Analysis.ipynb](Data_Analysis.ipynb). A few things stood out afterward that influenced my model design:
+My analysis and exploration of the data were performed in [Data_Analysis.ipynb](Data_Analysis.ipynb), and some conclusions influenced my model design:
 * The dataset is comparatively small when the task is compressed into predicting both class and pIC50 values.
 * Making an individual model for each target would yield a lopsided training dataset for TYK2 since it is _under-represented_.
 * The deviations between pIC50 and pKi make them incompatible with being used together, and artificially generating data will tamper with model predictions.
@@ -38,11 +38,11 @@ The results from each model are contained within their respective jupyter notebo
 
 | Molecule Name | JAK1 | JAK2 | JAK3 | TYK2 |
 | --- | --- | --- | --- | --- |
-| WP1066 | *T* 0.23 | *T* 0.90 | *T* 0.12 | *T* 0.02 |
-| Ruxolitinib | *T* 0.99 | *T* 0.75 | *F* 0.994 | *T* 0.01 |
-| AZD1480 | *F* 0.98 | *T* 0.99 | *T* 0.003 | *T* 0.006 |
-| AT9283 | *T* 0.02 | *T* 0.97 | *T* 0.99 | *T* 0.02 |
-| Deucravacitinib | *F* 0.97 | *F* 0.97 | *F* 0.80 | *F* 0.04 |
+| WP1066 | **0.23** | **0.90** | **0.12** | **0.02** |
+| Ruxolitinib | **0.99** | **0.75** | 0.994 | **0.01** |
+| AZD1480 | 0.98 | **0.99** | **0.003** | **0.006** |
+| AT9283 | **0.02** | **0.97** | **0.99** | **0.02** |
+| Deucravacitinib | 0.97 | 0.97 | 0.80 | 0.04 |
 
 The model achieved an AUC of 0.78 on class label prediction! Unfortunately, I did not find the literature for the pIC50 values of these molecules in time, so I could not evaluate the direct pIC50 predictions on OOD data. 
 

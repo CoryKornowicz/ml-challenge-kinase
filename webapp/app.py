@@ -93,10 +93,12 @@ def predict():
             print('File must be .smi', file=sys.stderr)
             return redirect(url_for('index'))
         # Grab all smiles from the file 
+        # print()
         mol_smiles = []
-        with open(f.filename, 'r') as file:
-            mol_smiles.extend(line.strip() for line in file)
-        
+        # with open(f.filename, 'r') as file:
+        file_data = f.stream.read().decode('utf-8')
+        for line in file_data.splitlines(keepends=True):
+            mol_smiles.append(line)
         # Predict and draw each molecule
         for smi in mol_smiles:
             molecule = MolEntry(smiles=smi)

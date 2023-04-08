@@ -19,3 +19,6 @@ The api endpoint will return a JSON object with the predicted pIC50 values and p
 For using the frontend, it can accept a SMILES string or a _.smi_ file of SMILES strings separated by newlines.
 
 This web app model is easily transferrable to another hosting service such as Heroku or AWS. It also demonstrates how versatile it can be as a frontend service for more visual explorations, or as a backend service for rapid predictions.
+
+<!-- Add image from ../images/kinpred -->
+![KinPred Web App Demo ](../images/kinpred_server.png)

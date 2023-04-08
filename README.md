@@ -55,6 +55,8 @@ The full use case is explored in the [webapp](webapp) folder, and the API can be
 curl -X POST http://127.0.0.1:5000/api_predict -d "smiles=[INSERT SMILES]"
 ```
 
+![KinPred Web App Demo ](images/kinpred_server.png)
+
 ## Future Work
 
 Given more time, I would have liked to explore AWS deployment and dataset balancing. I think the model could be improved by evening the distribution of samples to their respective targets. However, this method would need to consider molecules with multiple targets, which provides a unique challenge. Would the molecule be counted for each target once or multiple times? How does the distribution of active molecules with multiple targets skew the model's predictions on molecules with only one target? 
